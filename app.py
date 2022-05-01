@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=['post', 'get'])
 def index_page():
-    return "Следуйте инструкции в файле README.md"
+    return "Следуйте  инструкции в файле README.md"
 
 
 @app.route("/week_from_date", methods=['post', 'get'])
