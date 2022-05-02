@@ -1,5 +1,5 @@
 from datetime import date, datetime
-from flask import Flask, request, json, jsonify
+from flask import Flask, request, json, jsonify, render_template
 
 
 app = Flask(__name__)
@@ -7,19 +7,17 @@ app = Flask(__name__)
 
 @app.route("/", methods=['post', 'get'])
 def index_page():
-    return "Следуйте  инструкции в файле README.md"
-
-
-@app.route("/week_from_date", methods=['post', 'get'])
-def week_from_date():
-    input = request.json['input']
-    date_object = datetime.strptime(input, "%d/%m/%Y %H:%M")
-    date_ordinal = date_object.toordinal()
-    year = date_object.year
-    week = ((date_ordinal - _week1_start_ordinal(year)) // 7) + 1
-    if date_ordinal < _week1_start_ordinal(year):
-        return jsonify("Введие дату после 1 января 2019го года")
-    return jsonify(week)
+    message = ''
+    if request.method == 'POST':
+        input = request.form.get('input')
+        date_object = datetime.strptime(input, "%d/%m/%Y %H:%M")
+        date_ordinal = date_object.toordinal()
+        year = date_object.year
+        week = ((date_ordinal - _week1_start_ordinal(year)) // 7) + 1
+        if date_ordinal < _week1_start_ordinal(year):
+            return render_template('index.html', message="Введие дату после 1 января 2019го года")
+        return render_template('index.html', message=week)
+    return render_template('index.html')
 
 
 def _week1_start_ordinal(year):
@@ -32,3 +30,4 @@ def _week1_start_ordinal(year):
 
 if __name__ == '__main__':
      app.run(debug=True)
+

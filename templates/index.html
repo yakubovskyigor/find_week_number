@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+    {% if message %}
+        <p>Неделя номер: {{ message }}</p>
+    {% endif %}
+
+    <form action="" method="post">
+        <p>
+	    <label for="input">Введите дату в формате число/месяц/год часы:минуты</label>
+	    <input type="text" name="input">
+	</p>
+	<p>
+	    <input type="submit">
+	</p>
+    </form>
+
+</body>
+</html>
