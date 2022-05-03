@@ -4,4 +4,4 @@ pip install -r requirements.txt
 При вводе даты сервис выведет сообщением номер недели, точкой отсчета для которой будет считаться 1 января 2019г.
 
 Сервис работает на хостинге Heroku.
-Ссылка на сервис: https://dashboard.heroku.com/apps/warm-temple-18206
+Ссылка на сервис: https://warm-temple-18206.herokuapp.com/
